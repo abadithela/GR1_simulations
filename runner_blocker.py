@@ -30,7 +30,7 @@ sys_safe = {
 # Avoid collision:
 sys_safe |= {
              '(b=1 -> !(r=2))',
-             '(b=3 -> !(r=3))'
+             '(b=3 -> !(r=3))',
 }
 
 env_prog = {}
@@ -46,12 +46,13 @@ print(specs.pretty())
 # The controller decides based on current variable values only,
 # without knowing yet the next values that environment variables take.
 # A controller with this information flow is known as Moore.
-specs.moore = True
+specs.moore = False
+# specs.plus_one = False
 # Ask the synthesizer to find initial values for system variables
 # that, for each initial values that environment variables can
 # take and satisfy `env_init`, the initial state satisfies
 # `env_init /\ sys_init`.
-specs.qinit = r'\E \A'  # i.e., "there exist sys_vars: forall env_vars"
+specs.qinit = r'\A \E'  # i.e., "there exist sys_vars: forall env_vars"
 
 # At this point we can synthesize the controller
 # using one of the available methods.
