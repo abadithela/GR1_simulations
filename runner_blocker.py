@@ -29,7 +29,7 @@ sys_safe = {
 
 # Avoid collision:
 sys_safe |= {
-             '(b=2 -> !(r=2))',
+             '(b=1 -> !(r=2))',
              '(b=3 -> !(r=3))'
 }
 
